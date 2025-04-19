@@ -1,5 +1,5 @@
 const CoverLetter = async ({ params}) => {
-  const id = await params.id;
+  const {id} = await params.id;
 
   return <div>CoverLetter: {id}</div>;
 };

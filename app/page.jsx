@@ -174,7 +174,7 @@ export default function Home() {
       <section className="w-full ">
         <div className="mx-auto py-24 bg-gradient-to-b from-zinc-400 via-zinc-200 to-zinc-600 rounded-lg">
           <div className="flex flex-col items-center justify-center space-y-4 text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold tracking-tighter text-primary-foreground sm:text-4xl md:text-5xl">Ready to Accelerate Your Career?</h2>
+            <h2 className="text-3xl font-bold tracking-tighter text-primary-foreground sm:text-4xl md:text-5xl [text-shadow:0_2px_4px_rgba(0,0,0,0.3)]">Ready to Accelerate Your Career?</h2>
             <p className="mx-auto max-w-[600px] text-primary-foreground/80 md:text-xl">
               Join thousands of professionals who are advancing their careers
               with AI-powered guidance.
