@@ -1,5 +1,15 @@
-const onboardingForm = ({ industries }) => {
-  return <div>onboardingForm</div>;
+"use client";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { onboardingSchema } from "@/app/lib/schema";
+
+const OnboardingForm = ({ industries }) => {
+  const form = useForm({
+    resolver: zodResolver(onboardingSchema)
+  })
+  
+  return <div>OnboardingForm</div>;
 };
 
-export default onboardingForm;
+export default OnboardingForm;
