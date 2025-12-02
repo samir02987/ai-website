@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 
 const OnboardingForm = ({ industries }) => {
 
-  const [selectedIndustry, setselectedIndustry] = useState(null);
+  const [selectedIndustry, setSelectedIndustry] = useState(null);
   const router = useRouter(); 
 
   const {register,
@@ -21,7 +21,11 @@ const OnboardingForm = ({ industries }) => {
         watch,
       } = useForm({
     resolver: zodResolver(onboardingSchema)
-  })
+  });
+
+  const onSubmit = async (values) => {};
+
+  const watchIndustry = watch("industry");
   
   return ( 
   <div className="flex items-center justify-center bg-background">
@@ -33,12 +37,20 @@ const OnboardingForm = ({ industries }) => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
-          <div>
+        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <div className="space-y-2">
             <Label htmlFor='industry'>Industry</Label>
-            <Select>
-             <SelectTrigger className="w-[180px]">
-               <SelectValue placeholder="Theme" />
+            <Select
+              onValueChange={(value) => {
+                setValue("industry", value);
+                setSelectedIndustry(
+                  industries.find((ind) => ind.id === value)
+                );
+                setValue("subIndustry", "");
+              }}
+            >
+             <SelectTrigger id="industry" className="w-full">
+               <SelectValue placeholder="Select an industry" />
              </SelectTrigger>
              <SelectContent>
                {industries.map((ind)=>{
@@ -50,7 +62,37 @@ const OnboardingForm = ({ industries }) => {
                })}
              </SelectContent>
             </Select>
+            {errors.industry && (
+              <p className="text-sm text-red-500">
+                {errors.industry.message}
+              </p>
+            )}
           </div>
+          
+         {watchIndustry && (
+          <div className="space-y-2">
+            <Label htmlFor="subIndustry">Specialization</Label>
+            <Select onValueChange={(value) => setValue("subIndustry", value)}>
+             <SelectTrigger id="subIndustry" className="w-full">
+               <SelectValue placeholder="Select an industry" />
+             </SelectTrigger>
+             <SelectContent>
+               {selectedIndustry?.subIndustries.map((ind)=>{
+                return ( 
+                  <SelectItem value={ind} key={ind}>
+                    {ind}
+                  </SelectItem>
+                );
+               })}
+             </SelectContent>
+            </Select>
+            {errors.subIndustry && (
+              <p className="text-sm text-red-500">
+                {errors.subIndustry.message}
+              </p>
+            )}
+          </div>
+         )}
         </form>
       </CardContent>
     </Card>
