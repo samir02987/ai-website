@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 const OnboardingForm = ({ industries }) => {
 
@@ -93,6 +94,38 @@ const OnboardingForm = ({ industries }) => {
             )}
           </div>
          )}
+
+         <div className="space-y-2">
+            <Label htmlFor="experience">Years of Experience</Label>
+            <Input id="experience"
+            type="number"
+            min="0"
+            max="50"
+            placeholder="Enter your years of experience"
+            {...register("experience")} 
+            />
+            
+            {errors.experience && (
+              <p className="text-sm text-red-500">
+                {errors.experience.message}
+              </p>
+           )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="skills">Skills</Label>
+            <Input 
+            id="skills"
+            placeholder="e.g., Python, javaScript, Project Management"
+            {...register("experience")} 
+            />
+            
+            {errors.experience && (
+              <p className="text-sm text-red-500">
+                {errors.experience.message}
+              </p>
+           )}
+          </div>
         </form>
       </CardContent>
     </Card>
