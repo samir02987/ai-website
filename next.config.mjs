@@ -11,6 +11,9 @@ const nextConfig = {
         ],
         domains: ['randomuser.me'],
     },
+    turbopack: {
+        root: process.cwd(),
+    },
 };
 
 export default nextConfig;
