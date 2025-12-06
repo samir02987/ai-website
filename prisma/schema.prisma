@@ -88,7 +88,7 @@ model IndustryInsight {
 
   // Markets conditions
   marketOutlook   MarketOutlook   // "Positive", "Neutral", "Negative"
-  keyTrends       String   // Array of current industry trends
+  keyTrends       String[]   // Array of current industry trends
 
   // Learning suggestions
   recommendedSkills String[]  // Skills recomended for the industry
